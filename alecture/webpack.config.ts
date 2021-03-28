@@ -73,7 +73,12 @@ const config: webpack.Configuration = {
     publicPath: '/dist/',
   },
   devServer: {
-    historyApiFallback: true, // react router
+    historyApiFallback: true, // react router 
+    // SPA는 원래 url이 없음. 페이지가 그냥 하나임.
+    // historyAPI를 통해 가짜로 뒤에 API url을 만들어줌.
+    // localhost:3090 뒤에 붙는 /login 등은 실제 존재하지 않는 주소임.
+    // historyApiFallback: true 설정을 통해 웹팩 서버가 실제 존재하는 주소 처럼 해줌.
+    // 원래 새로고침 시 주소는 서버로 가는 주소임. 뒤에 붙는 API 주소는 다 무시되고 index로 감.
     port: 3090,
     publicPath: '/dist/',
     proxy: {
