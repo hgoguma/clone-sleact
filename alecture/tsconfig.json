@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true, // import * React from 'react'; import 시 as 생략 가능
+        "sourceMap": true,
+        "lib": ["ES2020", "DOM"],
+        "jsx": "react",
+        "module": "esnext", // 최신 module 사용
+        "moduleResolution": "Node",
+        "target": "es5", // es5로 변환
+        "strict": true,
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "@hooks/*": ["hooks/*"],
+            "@components/*": ["components/*"],
+            "@layouts/*": ["layouts/*"],
+            "@pages/*": ["pages/*"],
+            "@utils/*": ["utils/*"],
+            "@typings/*": ["typings/*"]
+        }
+    }
+}
