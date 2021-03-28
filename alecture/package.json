@@ -12,6 +12,9 @@
   "license": "MIT",
   "dependencies": {
     "@emotion/babel-plugin": "^11.2.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@loadable/component": "^5.14.1",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "cross-env": "^7.0.3",
