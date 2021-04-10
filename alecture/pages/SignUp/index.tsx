@@ -2,9 +2,13 @@ import React, { useCallback, useState } from 'react';
 import useInput from '@hooks/useInput';
 import axios from 'axios';
 import { Form, Label, Input, LinkContainer, Button, Header, Error, Success } from './styles';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom';
+import useSWR from 'swr';
+import fetcher from '@utils/fetcher';
 
 const SignUp = () => {
+    const { data, error, revalidate } = useSWR('/api/users', fetcher);
+    
     const [email, onChangeEmail] = useInput('');
     const [nickname, onChangeNickname] = useInput('');
     const [password, setPassword] = useState('');
@@ -12,7 +16,7 @@ const SignUp = () => {
     const [mismatchError, setMismatchError] = useState(false);
     const [signUpError, setSignUpError] = useState('');
     const [signUpSuccess, setSignUpSuccess] = useState(false);
-
+    
 
     const onChangePassword = useCallback((e) => {
         setPassword(e.target.value);
@@ -43,13 +47,17 @@ const SignUp = () => {
                 .catch((error) => {
                     console.log(error.response);
                     setSignUpError(error.response.data);
-
                 })
                 .finally(() => {
                     
                 });
         }
     }, [email, nickname, password, passwordCheck, mismatchError]);
+
+    // 로그인 되어 있는 경우 페이지 이동
+    if(data) {
+        return <Redirect to="/workspace/channel" />;
+    }
 
     return (
         <div id="container">

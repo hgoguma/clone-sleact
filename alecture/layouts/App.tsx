@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // 페이지 단위로 코드 스플리팅
 const LogIn = loadable(() => import('@pages/LogIn'));
 const SignUp = loadable(() => import('@pages/SignUp'));
+const Channel = loadable(() => import('@pages/Channel'));
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
             <Redirect exact path="/" to="/login" /> 
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/workspace/channel" component={Channel} />
         </Switch>
     );
 }
